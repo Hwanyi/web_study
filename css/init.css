@@ -1,6 +1,10 @@
 #HOME {
     text-align: center;
     font-size: 60px;
-    text-decoration: none;
     color:blue;
+
+    border-bottom: 1px black solid;
+    padding-bottom: 10px;
+    margin: 0px;
+
 }
