@@ -1,30 +1,32 @@
-import './App.css';
-import Main from './Main'
-import Header from './Header'
-import Student from './Student'
-import Teacher from './Teacher'
-import Footer from './Footer';
-import React, { useEffect } from 'react';
-import {BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Profile from './pages/Profile'
+import Article from './pages/Article'
+import Articles from './pages/Articles'
+import Layout from './Layout'
+import NotFound from './pages/NotFound'
+import Login from './pages/Login'
+import MyPage from './pages/MyPage'
 
 
-function App() {
+const App = () => {
 
   return (
-    <div className="App">
-      <BrowserRouter>
-      <div className='Container'>
-        <Header/>
-        <Routes>
-          <Route path='/' element={<Main/>}></Route>
-          <Route path='/student/*' element={<Student/>}></Route>
-          <Route path='/teacher/*' element={<Teacher/>}></Route>
-        </Routes>
-        <Footer/>
-        </div>
-      </BrowserRouter>
-    </div>
-  );
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+        <Route index element={<Home/>} />
+        <Route path='/about' element={<About/>}/>
+        <Route path='/profiles/:username' element={<Profile/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/mypage' element={<MyPage/>}/>
+      </Route>
+      <Route path='/articles' element={<Articles/>}>
+        <Route path=':id' element={<Article/>}/>
+      </Route>
+      <Route path='*' element={<NotFound/>}/>
+    </Routes>
+  )
 }
 
 export default App;
